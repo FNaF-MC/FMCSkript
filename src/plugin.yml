@@ -2,5 +2,5 @@ main: hu.Pdani.FMCSkript.FMCSkriptPlugin
 name: FMCSkript
 authors: [Pdani001]
 description: Skript addon written for FNAFMC
-version: '1.6.4'
+version: '1.6.5'
 softdepend: [Skript,NickNamer,LibsDisguises]

@@ -68,22 +68,34 @@ public class NewDisguiseExpr extends SimpleExpression<Disguise> {
                         bd = data.getSingle(e);
                     }
                     ItemStack stack = block.getSingle(e);
-                    return new Disguise[]{new MiscDisguise(disguiseType, stack.getType(), bd.intValue())};
+                    return new Disguise[]{new MiscDisguise(disguiseType, stack.getType(), bd.intValue()).setViewSelfDisguise(false)};
                 } else {
-                    return new Disguise[]{new MiscDisguise(disguiseType)};
+                    return new Disguise[]{new MiscDisguise(disguiseType).setViewSelfDisguise(false)};
                 }
             } else if (disguiseType.isMob()) {
                 if (baby != null && baby.getSingle(e) != null) {
-                    return new Disguise[]{new MobDisguise(disguiseType, !baby.getSingle(e))};
+                    MobDisguise disguise = new MobDisguise(disguiseType, baby.getSingle(e));
+                    if (name != null && name.getSingle(e) != null) {
+                        String pname = name.getSingle(e);
+                        disguise.setDisguiseName(pname);
+                        disguise.setCustomDisguiseName(true);
+                    }
+                    return new Disguise[]{disguise.setViewSelfDisguise(false)};
                 } else {
-                    return new Disguise[]{new MobDisguise(disguiseType)};
+                    MobDisguise disguise = new MobDisguise(disguiseType);
+                    if (name != null && name.getSingle(e) != null) {
+                        String pname = name.getSingle(e);
+                        disguise.setDisguiseName(pname);
+                        disguise.setCustomDisguiseName(true);
+                    }
+                    return new Disguise[]{disguise.setViewSelfDisguise(false)};
                 }
             } else if (disguiseType.isPlayer()) {
                 if (name != null && name.getSingle(e) != null) {
                     String pname = name.getSingle(e);
-                    return new Disguise[]{new PlayerDisguise(pname)};
+                    return new Disguise[]{new PlayerDisguise(pname).setViewSelfDisguise(false)};
                 } else {
-                    return new Disguise[]{new PlayerDisguise("Notch")};
+                    return new Disguise[]{new PlayerDisguise("Notch").setViewSelfDisguise(false)};
                 }
             } else {
                 FMCSkriptPlugin.getInstance().getLogger().warning("Unknown DisguiseType: " + disguiseType);
