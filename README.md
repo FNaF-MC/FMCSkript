@@ -12,7 +12,7 @@
 - Sneak state changer:
   - `sneak[ing] [state] of %player%`
 - Entity disguise (requires LibsDisguises plugin):
-  - `[new] disguise [with] type %-string% [with block [id] %-itemstack%] [(and|with) data [id] %number%] [with [user[ ]]name %-string%] [(and|with) adult [state] %-boolean%]`
+  - `[new] disguise [with] type %-string% [with block [id] %-itemstack%] [with armor %-string%] [(and|with) data [id] %number%] [with [user[ ]]name %-string%] [(and|with) adult [state] %-boolean%] [(and|with) visible [state] %-boolean%]`
     - **Please, make sure to call this and store the returned value, before using the "disguise of %entity%" expression**
   - `disguise of %entity%`
     - **Please, make sure to call the "\[new\] disguse type (...)" expression, and provide the stored value, before calling this**
