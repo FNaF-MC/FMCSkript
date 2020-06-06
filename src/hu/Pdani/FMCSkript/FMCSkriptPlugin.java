@@ -2,6 +2,7 @@ package hu.Pdani.FMCSkript;
 
 import ch.njol.skript.Skript;
 import ch.njol.skript.SkriptAddon;
+import me.libraryaddict.disguise.LibsDisguises;
 import org.bukkit.block.Block;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -27,6 +28,8 @@ public class FMCSkriptPlugin extends JavaPlugin {
         addon = Skript.registerAddon(this);
         try {
             addon.loadClasses("hu.Pdani.FMCSkript", "elements");
+            if(hasDisguise())
+                addon.loadClasses("hu.Pdani.FMCSkript", "disguise");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -51,6 +54,14 @@ public class FMCSkriptPlugin extends JavaPlugin {
         if(pl == null)
             return null;
         return ((NickNamerPlugin) pl).getAPI();
+    }
+
+    private boolean hasDisguise() {
+        Plugin pl = getServer().getPluginManager().getPlugin("LibsDisguises");
+        if (pl == null) {
+            return false;
+        }
+        return (pl instanceof LibsDisguises);
     }
 
     public static NickManager getNmapi() {
