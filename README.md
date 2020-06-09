@@ -16,3 +16,5 @@
     - **Please, make sure to call this and store the returned value, before using the "disguise of %entity%" expression**
   - `disguise of %entity%`
     - **Please, make sure to call the "\[new\] disguse type (...)" expression, and provide the stored value, before calling this**
+  - `self disguise [visible] of %entity%`
+    - The reset function will always set this to false, and if the player doesn't have a disguise this will also always return false
